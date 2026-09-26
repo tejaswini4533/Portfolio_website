@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional Python Full Stack Developer Portfolio">
-  <title>Bezawad Hema Tejaswini | Python Full Stack Developer</title>
+  <meta name="description" content="Bezawada Hema Tejaswini — CSE-AIML Undergraduate, Python Full Stack Developer, and Athlete. Portfolio showcasing projects, certifications, skills, and background.">
+  <title>Bezawada Hema Tejaswini | Python Full Stack Developer & AI Enthusiast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,10 +13,14 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg fixed-top glass-nav">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#home"><span class="brand-dot"></span> Tejaswini</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <span class="brand-dot"></span> Tejaswini Bezawada
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
@@ -24,118 +28,349 @@
         <li><a class="nav-link" href="#home">Home</a></li>
         <li><a class="nav-link" href="#about">About</a></li>
         <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#certifications">Credentials</a></li>
         <li><a class="nav-link" href="#projects">Projects</a></li>
         <li><a class="nav-link" href="#education">Education</a></li>
         <li><a class="nav-link" href="#contact">Contact</a></li>
-        <li><a class="btn btn-dark rounded-pill px-4" href="#contact">Let's Talk</a></li>
+        <li class="ms-lg-2 d-flex gap-2">
+          <a class="btn btn-outline-dark rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1" href="{{ url_for('download_resume') }}">
+            <i class="bi bi-file-earmark-arrow-down"></i> Resume
+          </a>
+          <a class="btn btn-dark rounded-pill px-3 py-1" href="#contact">Let's Talk</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<!-- Flash Alerts -->
 {% with flashes = get_flashed_messages(with_categories=true) %}
 {% if flashes %}
 <div class="flash-wrap">
   {% for category, message in flashes %}
-    <div class="alert alert-{{ category }} shadow-sm">{{ message }}</div>
+    <div class="alert alert-{{ category }} shadow alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   {% endfor %}
 </div>
 {% endif %}
 {% endwith %}
 
+<!-- Hero Section -->
 <header id="home" class="hero section-pad">
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-7 reveal">
-        <div class="eyebrow"><span></span> AVAILABLE FOR OPPORTUNITIES</div>
-        <h1>Hi, I'm <span class="gradient-text">Tejaswini.</span><br>Python Full Stack Developer.</h1>
-        <p class="hero-copy">I build clean, responsive and practical web applications using Python, Flask, databases and modern frontend technologies.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="#projects" class="btn btn-dark btn-lg rounded-pill px-4">View My Work <i class="bi bi-arrow-up-right"></i></a>
-          <a href="#contact" class="btn btn-outline-dark btn-lg rounded-pill px-4">Contact Me</a>
+        <div class="eyebrow">
+          <span class="pulse-dot"></span> OPEN FOR INTERNSHIPS & OPPORTUNITIES
         </div>
-        <div class="socials mt-4">
-          <a href="https://github.com/tejaswini4533" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="https://www.linkedin.com/in/tejaswini-bezawada-342b61328/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="mailto:bezawadahematejaswini@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+        <h1>
+          Hi, I'm <span class="gradient-text">Bezawada Hema Tejaswini.</span><br>
+          Python Full Stack Developer.
+        </h1>
+        <p class="hero-copy">
+          CSE-AIML undergraduate at Sasi Institute of Technology & Engineering. I engineer responsive, data-driven web applications using Python, Flask, and modern web architectures, supported by disciplined problem-solving and athlete-tested grit.
+        </p>
+        
+        <div class="hero-pills">
+          <span class="hero-pill"><i class="bi bi-mortarboard-fill"></i> B.Tech CSE-AIML '27 (CGPA 8.2)</span>
+          <span class="hero-pill"><i class="bi bi-trophy-fill"></i> All India University Athlete</span>
+          <span class="hero-pill"><i class="bi bi-shield-check"></i> NCC Cadet</span>
+          <span class="hero-pill"><i class="bi bi-patch-check-fill"></i> NPTEL Elite (IoT)</span>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+          <a href="#projects" class="btn btn-dark btn-lg rounded-pill px-4">
+            View My Work <i class="bi bi-arrow-up-right ms-1"></i>
+          </a>
+          <a href="{{ url_for('download_resume') }}" class="btn btn-accent btn-lg rounded-pill px-4">
+            <i class="bi bi-download me-1"></i> Download CV (PDF)
+          </a>
+          <a href="#contact" class="btn btn-outline-dark btn-lg rounded-pill px-4">
+            Contact Me
+          </a>
+        </div>
+
+        <div class="socials mt-4 d-flex align-items-center">
+          <a href="https://github.com/tejaswini4533" target="_blank" rel="noopener noreferrer" title="GitHub Profile" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/tejaswini-bezawada-342b61328/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.codechef.com/users/tejaswini_313" target="_blank" rel="noopener noreferrer" title="CodeChef Profile" aria-label="CodeChef"><i class="bi bi-code-square"></i></a>
+          <a href="mailto:bezawadahematejaswini@gmail.com" title="Send Email" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+          <a href="tel:+919121837523" title="Call Me" aria-label="Phone"><i class="bi bi-telephone-fill"></i></a>
         </div>
       </div>
+
       <div class="col-lg-5 reveal">
         <div class="profile-card">
           <div class="orbit orbit-one"></div>
           <div class="orbit orbit-two"></div>
-          <div class="profile-avatar">BT</div>
-          <div class="floating-card card-one"><i class="bi bi-code-slash"></i><span>Python</span></div>
-          <div class="floating-card card-two"><i class="bi bi-database"></i><span>SQL</span></div>
-          <div class="floating-card card-three"><i class="bi bi-window-stack"></i><span>Flask</span></div>
-          <div class="profile-caption"><strong>CSM Student</strong><span>Developer • Learner • Builder</span></div>
+          
+          <!-- Real Profile Picture with glowing frame -->
+          <div class="profile-avatar-wrap">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Bezawada Hema Tejaswini" class="profile-avatar-img">
+          </div>
+
+          <!-- Orbiting Skill Badges -->
+          <div class="floating-card card-one"><i class="bi bi-filetype-py"></i><span>Python & Flask</span></div>
+          <div class="floating-card card-two"><i class="bi bi-database-fill"></i><span>SQL & DBs</span></div>
+          <div class="floating-card card-three"><i class="bi bi-cpu-fill"></i><span>AI & IoT</span></div>
+          <div class="floating-card card-four"><i class="bi bi-code-slash"></i><span>CodeChef 500+</span></div>
+
+          <div class="profile-caption">
+            <strong>Bezawada Hema Tejaswini</strong>
+            <span>CSE-AIML • Sasi Institute of Tech & Engineering</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </header>
 
+<!-- About Section -->
 <section id="about" class="section-pad">
   <div class="container">
     <div class="section-heading reveal">
-      <span>01 — ABOUT ME</span><h2>Turning ideas into <em>working products.</em></h2>
+      <span>01 — ABOUT ME</span>
+      <h2>Combining technical rigor with <em>disciplined execution.</em></h2>
     </div>
-    <div class="row g-5">
+    <div class="row g-5 align-items-center">
       <div class="col-lg-7 reveal">
-        <p class="lead">I'm a Computer Science student who enjoys learning new technologies and building projects that solve practical problems.</p>
-        <p>I am currently strengthening my Python, full-stack development, problem-solving and communication skills. My approach is simple: learn the concept, build something with it, test it, and improve it.</p>
+        <p class="lead-text">
+          I am a Computer Science & Artificial Intelligence undergraduate (Graduating 2027) at Sasi Institute of Technology and Engineering with an academic CGPA of 8.2 and a passion for engineering practical, high-quality software.
+        </p>
+        <p class="text-secondary">
+          My foundation is built on three pillars: <strong>technical curiosity</strong>, <strong>rigorous discipline</strong>, and <strong>practical building</strong>. As an <strong>All India Inter-University Athlete (2024)</strong> and an active <strong>NCC Cadet</strong>, I bring the same focus, accountability, and teamwork to software development that high-stakes sports and cadet training demand.
+        </p>
+        <p class="text-secondary">
+          From architecting database-backed web applications in Python/Flask to cracking competitive programming challenges and researching Internet of Things ecosystems (IIT Kharagpur Elite certification), I continuously refine my skills to build software that creates measurable value.
+        </p>
+        
         <div class="stats-grid mt-4">
-          <div><strong>8.3</strong><span>CGPA</span></div>
-          <div><strong>500+</strong><span>Problem Solving Practice</span></div>
-          <div><strong>3+</strong><span>Featured Projects</span></div>
-          <div><strong>1</strong><span>Curious Mind</span></div>
+          <div class="stat-item">
+            <strong>8.2</strong>
+            <span>B.Tech CGPA</span>
+          </div>
+          <div class="stat-item">
+            <strong>99.6%</strong>
+            <span>10th SSC Merit</span>
+          </div>
+          <div class="stat-item">
+            <strong>500+</strong>
+            <span>Problems Solved</span>
+          </div>
+          <div class="stat-item">
+            <strong>71%</strong>
+            <span>NPTEL IoT Elite</span>
+          </div>
         </div>
       </div>
+
       <div class="col-lg-5 reveal">
         <div class="info-box">
-          <div><span>Location</span><strong>Andhra Pradesh, India</strong></div>
-          <div><span>Education</span><strong>B.Tech — CSM</strong></div>
-          <div><span>Focus</span><strong>Python • Full Stack • AI</strong></div>
-          <div><span>Interests</span><strong>Web Apps • AI • Sports</strong></div>
+          <div>
+            <span>Full Name</span>
+            <strong>Bezawada Hema Tejaswini</strong>
+          </div>
+          <div>
+            <span>Institution</span>
+            <strong>Sasi Institute of Technology & Engineering</strong>
+          </div>
+          <div>
+            <span>Degree & Stream</span>
+            <strong>B.Tech — CSE (AI & Machine Learning)</strong>
+          </div>
+          <div>
+            <span>Location</span>
+            <strong>Ravicherla, Nuzvid, Vijayawada, AP, India</strong>
+          </div>
+          <div>
+            <span>Core Focus</span>
+            <strong>Python • Flask • REST APIs • SQL • AI Systems</strong>
+          </div>
+          <div>
+            <span>Extracurricular Honors</span>
+            <strong>All India Athlete '24 • NCC Cadet • Reverse Coding</strong>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Skills Section -->
 <section id="skills" class="section-pad soft-section">
   <div class="container">
-    <div class="section-heading reveal"><span>02 — SKILLS</span><h2>My technical <em>toolkit.</em></h2></div>
+    <div class="section-heading reveal">
+      <span>02 — TECHNICAL TOOLKIT</span>
+      <h2>Skills & technologies I <em>work with.</em></h2>
+    </div>
     <div class="row g-4">
-      {% for title, icon, skills in [
-        ('Programming','bi-terminal','Python, Java, C, Problem Solving'),
-        ('Web Development','bi-window','HTML5, CSS3, JavaScript, Bootstrap'),
-        ('Backend & Database','bi-server','Flask, REST API, SQLite, SQL'),
-        ('Tools & Concepts','bi-git','Git, GitHub, VS Code, OOP, DSA')
-      ] %}
       <div class="col-md-6 col-lg-3 reveal">
-        <div class="skill-card h-100"><i class="bi {{ icon }}"></i><h5>{{ title }}</h5><p>{{ skills }}</p></div>
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-terminal-fill"></i></div>
+          <h5>Programming Languages</h5>
+          <p class="text-muted small">Strong algorithmic foundations and object-oriented design.</p>
+          <div class="skill-badge-list">
+            <span class="skill-badge">Python 3</span>
+            <span class="skill-badge">Java</span>
+            <span class="skill-badge">C</span>
+            <span class="skill-badge">OOP</span>
+            <span class="skill-badge">DSA</span>
+          </div>
+        </div>
       </div>
-      {% endfor %}
+
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-window-fullscreen"></i></div>
+          <h5>Full-Stack Web</h5>
+          <p class="text-muted small">Designing responsive, user-friendly frontend interfaces and templates.</p>
+          <div class="skill-badge-list">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">Bootstrap 5</span>
+            <span class="skill-badge">Jinja2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-server"></i></div>
+          <h5>Backend & Database</h5>
+          <p class="text-muted small">Robust server-side logic, routing, REST APIs, and database modeling.</p>
+          <div class="skill-badge-list">
+            <span class="skill-badge">Flask</span>
+            <span class="skill-badge">SQLite</span>
+            <span class="skill-badge">SQLAlchemy</span>
+            <span class="skill-badge">REST APIs</span>
+            <span class="skill-badge">CRUD Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="skill-card h-100">
+          <div class="skill-icon"><i class="bi bi-tools"></i></div>
+          <h5>AI, IoT & Tools</h5>
+          <p class="text-muted small">Modern development workflows, version control, and emerging technologies.</p>
+          <div class="skill-badge-list">
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">VS Code</span>
+            <span class="skill-badge">IoT Architectures</span>
+            <span class="skill-badge">AI Concepts</span>
+            <span class="skill-badge">UI/UX Basics</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="projects" class="section-pad">
+<!-- Credentials & Certifications Section -->
+<section id="certifications" class="section-pad">
   <div class="container">
-    <div class="section-heading reveal"><span>03 — PROJECTS</span><h2>Things I've <em>built.</em></h2></div>
+    <div class="section-heading reveal">
+      <span>03 — CREDENTIALS & HONORS</span>
+      <h2>Verified <em>certifications</em> & achievements.</h2>
+    </div>
+    <div class="row g-4">
+      <!-- NPTEL -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">Score: 71% Elite</span>
+          <div class="credential-icon purple"><i class="bi bi-cpu"></i></div>
+          <h4>Introduction to Internet of Things (IoT)</h4>
+          <div class="credential-meta">NPTEL — IIT Kharagpur (Roll: NPTEL26CS37S985601745)</div>
+          <p>Comprehensive certification covering embedded sensors, microcontroller architectures, wireless sensor networks, IoT protocols, and cloud computing interfaces.</p>
+        </div>
+      </div>
+
+      <!-- CodeChef -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">4 Certifications</span>
+          <div class="credential-icon"><i class="bi bi-code-slash"></i></div>
+          <h4>CodeChef Competitive Programming</h4>
+          <div class="credential-meta">Handle: tejaswini_313 • 500+ Problems Solved</div>
+          <p>Verified certificates in <em>Problem Solving in Python</em> (f94a69c), <em>Practice Python</em> (3d181e2), <em>500 Difficulty Rating</em> (38677b1), and <em>Web Projects</em> (b509803).</p>
+        </div>
+      </div>
+
+      <!-- Athletics -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">National Level</span>
+          <div class="credential-icon green"><i class="bi bi-trophy"></i></div>
+          <h4>All India Inter-University Athlete (2024)</h4>
+          <div class="credential-meta">Inter-University Athletics Competitions</div>
+          <p>Represented the university at the prestigious national athletics level. Developed high physical endurance, intense focus, mental toughness, and precise time management.</p>
+        </div>
+      </div>
+
+      <!-- NCC Cadet -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">Cadet</span>
+          <div class="credential-icon purple"><i class="bi bi-shield-shaded"></i></div>
+          <h4>National Cadet Corps (NCC)</h4>
+          <div class="credential-meta">Leadership & Military Drill Training</div>
+          <p>Actively engaged in cadet training, cultivating unwavering discipline, punctuality, community leadership, and high reliability under challenging environments.</p>
+        </div>
+      </div>
+
+      <!-- IEEE Reverse Coding -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">Competition</span>
+          <div class="credential-icon"><i class="bi bi-lightning-charge"></i></div>
+          <h4>IEEE Reverse Coding Competition</h4>
+          <div class="credential-meta">IEEE Day 2025 • SASI IEEE SPS Chapter</div>
+          <p>Participated in rapid reverse code engineering, deciphering algorithm execution logic from black-box inputs/outputs, and reconstructing optimal source solutions.</p>
+        </div>
+      </div>
+
+      <!-- Forge Inspira -->
+      <div class="col-md-6 col-lg-4 reveal">
+        <div class="credential-card">
+          <span class="credential-badge">Workshop</span>
+          <div class="credential-icon green"><i class="bi bi-controller"></i></div>
+          <h4>Game Development & Logic Workshop</h4>
+          <div class="credential-meta">Forge Inspira 2025</div>
+          <p>Hands-on development experience exploring event-driven logic, game mechanics, asset pipelines, and interactive application design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section-pad soft-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span>04 — FEATURED WORK</span>
+      <h2>Things I've <em>engineered.</em></h2>
+    </div>
     <div class="row g-4">
       {% for project in projects %}
-      <div class="col-lg-4 reveal">
+      <div class="col-lg-6 reveal">
         <article class="project-card h-100">
           <div class="project-number">0{{ loop.index }}</div>
-          <div class="project-icon"><i class="bi bi-layers"></i></div>
+          <div class="project-icon"><i class="bi bi-layers-fill"></i></div>
           <h4>{{ project.title }}</h4>
           <p>{{ project.description }}</p>
           <div class="tech-list">{{ project.tech }}</div>
-          <div class="project-links mt-4">
-            <a href="{{ project.github }}" target="_blank">GitHub <i class="bi bi-arrow-up-right"></i></a>
-            {% if project.demo != '#' %}<a href="{{ project.demo }}" target="_blank">Live Demo</a>{% endif %}
+          <div class="project-links mt-auto">
+            <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-github"></i> Source Code <i class="bi bi-arrow-up-right"></i>
+            </a>
+            {% if project.demo != '#' %}
+            <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-box-arrow-up-right"></i> Live View / Profile
+            </a>
+            {% endif %}
           </div>
         </article>
       </div>
@@ -144,44 +379,145 @@
   </div>
 </section>
 
-<section id="education" class="section-pad soft-section">
+<!-- Education & Journey Section -->
+<section id="education" class="section-pad">
   <div class="container">
-    <div class="section-heading reveal"><span>04 — JOURNEY</span><h2>Education & <em>experience.</em></h2></div>
+    <div class="section-heading reveal">
+      <span>05 — ACADEMIC JOURNEY</span>
+      <h2>Education & <em>milestones.</em></h2>
+    </div>
     <div class="timeline">
-      <div class="timeline-item reveal"><span>2023 — Present</span><h4>B.Tech — Computer Science & Machine Learning</h4><p>SASI Institute of Technology & Engineering</p></div>
-      <div class="timeline-item reveal"><span>2025</span><h4>Technical Workshop — Game Development</h4><p>Hands-on workshop focused on development concepts and practical building.</p></div>
-      <div class="timeline-item reveal"><span>2024 — Present</span><h4>NCC Cadet & Student Activities</h4><p>Developing discipline, punctuality, teamwork and leadership through college activities.</p></div>
+      <div class="timeline-item reveal">
+        <span>2023 — 2027 (EXPECTED)</span>
+        <h4>Bachelor of Technology — Computer Science & Artificial Intelligence (CSE-AIML)</h4>
+        <p>Sasi Institute of Technology & Engineering, Tadepalligudem, AP</p>
+        <div class="timeline-badge">CGPA: 8.2 / 10.0</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span>2021 — 2023</span>
+        <h4>Intermediate / Junior College (MPC)</h4>
+        <p>Sri Sarada Junior College</p>
+        <div class="timeline-badge">CGPA: 9.0 / 10.0 (90%)</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span>2020 — 2021</span>
+        <h4>Secondary School Certificate (SSC)</h4>
+        <p>St. Thomas High School</p>
+        <div class="timeline-badge">Score: 99.6%</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section-pad">
+<!-- Call to Action Banner -->
+<section class="section-pad py-5">
   <div class="container">
     <div class="cta-box reveal">
-      <div><span class="eyebrow">LET'S BUILD SOMETHING</span><h2>Have a project idea?</h2><p>I'm open to internships, entry-level opportunities and interesting collaborations.</p></div>
-      <a href="#contact" class="btn btn-light rounded-pill px-4">Start a Conversation <i class="bi bi-arrow-right"></i></a>
+      <div>
+        <span class="eyebrow"><i class="bi bi-send-fill text-warning"></i> LET'S COLLABORATE</span>
+        <h2>Looking for a motivated, disciplined developer?</h2>
+        <p>I'm open for software engineering internships, Python full-stack developer roles, and impactful collaborative projects.</p>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <a href="{{ url_for('download_resume') }}" class="btn btn-light rounded-pill px-4 py-2 fw-bold">
+          <i class="bi bi-download me-1"></i> Get Resume (PDF)
+        </a>
+        <a href="#contact" class="btn btn-outline-light rounded-pill px-4 py-2">
+          Start Conversation <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Contact Section -->
 <section id="contact" class="section-pad contact-section">
   <div class="container">
-    <div class="section-heading reveal"><span>05 — CONTACT</span><h2>Let's connect.</h2></div>
+    <div class="section-heading reveal">
+      <span>06 — GET IN TOUCH</span>
+      <h2>Let's connect & <em>build.</em></h2>
+    </div>
     <div class="row g-5">
       <div class="col-lg-5 reveal">
-        <p class="lead">Have an opportunity or project in mind? Send me a message.</p>
-        <div class="contact-detail"><i class="bi bi-envelope"></i><div><small>Email</small><strong>bezawadahematejaswini@gmail.com</strong></div></div>
-        <div class="contact-detail"><i class="bi bi-geo-alt"></i><div><small>Location</small><strong>Andhra Pradesh, India</strong></div></div>
-        <div class="contact-detail"><i class="bi bi-linkedin"></i><div><small>LinkedIn</small><strong>linkedin.com/in/tejaswini-bezawada-342b61328/</strong></div></div>
+        <p class="lead-text">
+          Have an internship opportunity, project idea, or just want to chat about Python and AI? Drop a message and I'll respond promptly!
+        </p>
+
+        <a href="mailto:bezawadahematejaswini@gmail.com" class="contact-detail">
+          <i class="bi bi-envelope-fill"></i>
+          <div>
+            <small>Email</small>
+            <strong>bezawadahematejaswini@gmail.com</strong>
+          </div>
+        </a>
+
+        <a href="tel:+919121837523" class="contact-detail">
+          <i class="bi bi-telephone-fill"></i>
+          <div>
+            <small>Phone / WhatsApp</small>
+            <strong>+91 9121837523</strong>
+          </div>
+        </a>
+
+        <div class="contact-detail">
+          <i class="bi bi-geo-alt-fill"></i>
+          <div>
+            <small>Location</small>
+            <strong>Ravicherla, Nuzvid, Vijayawada, AP, India - 521201</strong>
+          </div>
+        </div>
+
+        <a href="https://www.linkedin.com/in/tejaswini-bezawada-342b61328/" target="_blank" rel="noopener noreferrer" class="contact-detail">
+          <i class="bi bi-linkedin"></i>
+          <div>
+            <small>LinkedIn</small>
+            <strong>linkedin.com/in/tejaswini-bezawada-342b61328</strong>
+          </div>
+        </a>
+
+        <a href="https://github.com/tejaswini4533" target="_blank" rel="noopener noreferrer" class="contact-detail">
+          <i class="bi bi-github"></i>
+          <div>
+            <small>GitHub</small>
+            <strong>github.com/tejaswini4533</strong>
+          </div>
+        </a>
+
+        <a href="https://www.codechef.com/users/tejaswini_313" target="_blank" rel="noopener noreferrer" class="contact-detail">
+          <i class="bi bi-code-square"></i>
+          <div>
+            <small>CodeChef</small>
+            <strong>codechef.com/users/tejaswini_313</strong>
+          </div>
+        </a>
       </div>
+
       <div class="col-lg-7 reveal">
         <form action="{{ url_for('contact') }}" method="POST" class="contact-form">
           <div class="row g-3">
-            <div class="col-md-6"><label>Name</label><input name="name" required placeholder="Your name"></div>
-            <div class="col-md-6"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"></div>
-            <div class="col-12"><label>Subject</label><input name="subject" required placeholder="Internship / Project / Collaboration"></div>
-            <div class="col-12"><label>Message</label><textarea name="message" rows="6" required placeholder="Write your message..."></textarea></div>
-            <div class="col-12"><button class="btn btn-dark rounded-pill px-4" type="submit">Send Message <i class="bi bi-send"></i></button></div>
+            <div class="col-md-6">
+              <label for="contact-name">Your Name</label>
+              <input id="contact-name" name="name" required placeholder="e.g. John Doe">
+            </div>
+            <div class="col-md-6">
+              <label for="contact-email">Your Email</label>
+              <input id="contact-email" type="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="col-12">
+              <label for="contact-subject">Subject</label>
+              <input id="contact-subject" name="subject" required placeholder="Internship Opportunity / Project Collaboration">
+            </div>
+            <div class="col-12">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+            </div>
+            <div class="col-12 pt-2">
+              <button class="btn btn-dark rounded-pill px-4 py-2" type="submit">
+                Send Message <i class="bi bi-send ms-1"></i>
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -189,7 +525,19 @@
   </div>
 </section>
 
-<footer><div class="container d-flex flex-wrap justify-content-between gap-3"><span>© 2026 Tejaswini. Built with Python & Flask.</span><span>Designed for learning • Built for opportunities.</span></div></footer>
+<!-- Footer -->
+<footer>
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <span>© 2026 Bezawada Hema Tejaswini. Built with Python & Flask.</span>
+    <div class="d-flex gap-3 align-items-center">
+      <a href="{{ url_for('view_resume') }}" target="_blank" class="text-secondary text-decoration-none">View Resume</a>
+      <span>•</span>
+      <a href="{{ url_for('download_resume') }}" class="text-secondary text-decoration-none">Download CV</a>
+      <span>•</span>
+      <a href="{{ url_for('messages') }}" class="text-secondary text-decoration-none">Admin Messages</a>
+    </div>
+  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
