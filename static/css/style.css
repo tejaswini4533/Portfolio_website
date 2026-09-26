@@ -479,6 +479,39 @@ body {
   border-color: rgba(124, 58, 237, 0.3);
 }
 
+.credential-card.with-photo {
+  padding: 0;
+  overflow: hidden;
+}
+
+.credential-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.credential-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.credential-card:hover .credential-img {
+  transform: scale(1.04);
+}
+
+.credential-card .credential-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .credential-badge {
   position: absolute;
   top: 20px;
